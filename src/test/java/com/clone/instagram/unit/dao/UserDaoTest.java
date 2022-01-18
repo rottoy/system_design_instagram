@@ -1,7 +1,9 @@
 package com.clone.instagram.unit.dao;
 
+import com.apple.eawt.AppEvent;
 import com.clone.instagram.dao.UserDao;
 import com.clone.instagram.model.User;
+import com.clone.instagram.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +19,15 @@ import java.util.List;
 public class UserDaoTest {
 
     @Autowired
-    UserDao userDao;
+    UserService userService;
 
     @Test
     public void getUserTest(){
-        List<User> userList = userDao.selectUserList();
+        userService.getUserAndPosts(1);
 
         //assert userList.size() != 0;
     }
+
 
 
 }

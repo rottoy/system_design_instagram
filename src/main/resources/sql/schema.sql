@@ -1,4 +1,5 @@
 DROP TABLE `user` IF EXISTS;
+DROP TABLE `user_follow` IF EXISTS;
 CREATE TABLE `user`
 (
     `id`                  int         NOT NULL AUTO_INCREMENT,
@@ -12,4 +13,13 @@ CREATE TABLE `user`
     `number_of_follower`  int         NOT NULL DEFAULT '0',
     `number_of_following` int         NOT NULL DEFAULT '0',
     PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1;
+) ENGINE = InnoDB AUTO_INCREMENT = 1;
+
+CREATE TABLE `user_follow`
+(
+    `id`           int NOT NULL AUTO_INCREMENT,
+    `follower_id`  int NOT NULL,
+    `following_id` int NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 1
+

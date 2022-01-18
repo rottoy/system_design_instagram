@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface UserDao {
 
-    public List<User> selectUserList();
+    public List<User> selectFollowerList(int userId);
+    public List<User> selectFollowingList(int userId);
 }

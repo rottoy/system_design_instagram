@@ -2,8 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clone.instagram.dao.UserDao">
 
-    <select id="selectUserList" resultType="com.clone.instagram.model.User">
+    <select id="selectFollowerList" resultType="com.clone.instagram.model.User">
         SELECT *
-        FROM user;
+        FROM user u
+        INNER JOIN user_follow uf ON uf.follower_id = u.id
+        where uf.following_id = #{userId};
+    </select>
+
+    <select id="selectFollowingList" resultType="com.clone.instagram.model.User">
+        SELECT *
+        FROM user u
+        INNER JOIN user_follow uf ON uf.following_id = u.id
+        where uf.follower_id = #{userId};
     </select>
 </mapper>
