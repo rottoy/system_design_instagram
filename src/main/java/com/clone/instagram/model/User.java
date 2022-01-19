@@ -3,11 +3,12 @@ package com.clone.instagram.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
-@Builder
 public class User {
 
     private int id;
@@ -17,9 +18,9 @@ public class User {
     private Date dateOfBirth;
     private Date postUpdateDate;
     private Boolean isPublic;
-    private int numberOfPosts;
+    private int numberOfPost;
     private int numberOfFollower;
     private int numberOfFollowing;
 
-
+    public User(){}
 }

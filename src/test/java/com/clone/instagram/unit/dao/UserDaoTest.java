@@ -21,6 +21,9 @@ public class UserDaoTest {
     @Autowired
     UserService userService;
 
+    @Autowired
+    UserDao userDao;
+
     @Test
     public void getUserTest(){
         userService.getUserAndPosts(1);

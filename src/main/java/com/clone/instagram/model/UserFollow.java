@@ -6,6 +6,6 @@ import lombok.Data;
 public class UserFollow {
 
     private int id;
-    private int followingUserId;
-    private int followerUserId;
+    private int followingId;
+    private int followerId;
 }
