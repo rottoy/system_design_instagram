@@ -1,3 +1,5 @@
+INSERT INTO `user` (`user_name`,`email`,`password`,`date_of_birth`,`is_public`) VALUES ('test_user','test_user@gmail.com','1234','2000-01-02 12:00:00','Y');
+INSERT INTO `user` (`user_name`,`email`,`password`,`date_of_birth`,`is_public`) VALUES ('1q2w3e4r','1q2w3e4r@gmail.com','1234','2000-01-02 12:00:00','Y');
 INSERT INTO `user` (`user_name`,`email`,`password`,`date_of_birth`,`is_public`) VALUES ('teemo','teemo@gmail.com','1234','2000-01-02 12:00:00','Y');
 INSERT INTO `user` (`user_name`,`email`,`password`,`date_of_birth`,`is_public`) VALUES ('darius','darius@gmail.com','1234','2001-02-03 12:00:00','N');
 INSERT INTO `user` (`user_name`,`email`,`password`,`date_of_birth`,`is_public`) VALUES ('garen','garen@gmail.com','1234','2002-03-04 12:00:00','Y');

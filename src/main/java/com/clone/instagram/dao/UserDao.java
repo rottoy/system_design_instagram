@@ -8,6 +8,9 @@ import java.util.List;
 
 public interface UserDao {
 
+    public int insertUser(User user);
+    public int unfollow(int followerId, int followingId);
+    public int follow(int followerId, int followingId);
     public List<User> selectFollowerList(int userId);
-    public List<UserDto> selectFollowingList(int userId);
+    public List<User> selectFollowingList(int userId);
 }

@@ -8,37 +8,38 @@ import com.clone.instagram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     UserDao userDao;
 
-    @Autowired
-    PostDao postDao;
-
     @Override
-    public User save(){
-        return null;
+    public int save(User user){
+        return userDao.insertUser(user);
     }
 
     @Override
-    public int follow(int userId1, int userId2){
-        return 0;
+    public int follow(int followerId, int followingId){
+        return userDao.follow(followerId, followingId);
     }
 
     @Override
-    public int unfollow(int userId1, int userId2){
-        return 0;
+    public int unfollow(int followerId, int followingId){
+        return userDao.unfollow(followerId, followingId);
     }
 
     @Override
-    public UserDto getUserAndPosts(int userId){
-        //get my following
-        userDao.selectFollowingList(userId);
-
-        //get my following's posts
-        System.out.println(userDao.selectFollowingList(userId));
-        return null;
+    public List<User> getFollowingList(int userId){
+        return userDao.selectFollowingList(userId);
     }
+
+    @Override
+    public List<User> getFollowerList(int userId){
+        return userDao.selectFollowerList(userId);
+    }
+
+
 }

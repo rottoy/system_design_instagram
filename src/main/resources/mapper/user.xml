@@ -2,22 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clone.instagram.dao.UserDao">
 
-    <resultMap id="UserMap" type="UserDto">
-        <result property="id" column="id"/>
-        <result property="userName" column="user_name"/>
-        <result property="email" column="email"/>
-        <result property="password" column="password"/>
-        <result property="dateOfBirth" column="date_of_birth"/>
-        <result property="postUpdateDate" column="post_update_date"/>
-        <result property="isPublic" column="is_public"/>
-        <result property="numberOfPost" column="number_of_post"/>
-        <result property="numberOfFollower" column="number_of_follower"/>
-        <result property="numberOfFollowing" column="number_of_following"/>
-        <collection property="userFollowList" ofType="UserFollow">
-            <result property="followingId" column="following_id"/>
-            <result property="followerId" column="follower_id"/>
-        </collection>
-    </resultMap>
+<!--    <resultMap id="UserMap" type="UserDto">-->
+<!--        <id property="id" column="user_id"/>-->
+<!--        <result property="userName" column="user_name"/>-->
+<!--        <result property="email" column="email"/>-->
+<!--        <result property="password" column="password"/>-->
+<!--        <result property="dateOfBirth" column="date_of_birth"/>-->
+<!--        <result property="postUpdateDate" column="post_update_date"/>-->
+<!--        <result property="isPublic" column="is_public"/>-->
+<!--        <result property="numberOfPost" column="number_of_post"/>-->
+<!--        <result property="numberOfFollower" column="number_of_follower"/>-->
+<!--        <result property="numberOfFollowing" column="number_of_following"/>-->
+<!--        <collection property="userFollowList" javaType="java.util.ArrayList" ofType="UserFollow">-->
+<!--            <id property="id" column="target_id"/>-->
+<!--            <result property="followingId" column="following_id"/>-->
+<!--            <result property="followerId" column="follower_id"/>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
 
     <sql id="selectAll">
         u.id,
@@ -33,20 +34,39 @@
     </sql>
 
     <select id="selectFollowerList" resultType="com.clone.instagram.model.User">
-        SELECT *
+        SELECT
+            <include refid="selectAll"/>
         FROM user u
         INNER JOIN user_follow uf ON uf.follower_id = u.id
-        where uf.following_id = #{userId};
+        WHERE uf.following_id = #{userId};
     </select>
 
 
-    <select id="selectFollowingList" resultMap="UserMap">
+    <select id="selectFollowingList" resultType="com.clone.instagram.model.User">
         SELECT
-            <include refid="selectAll"/>,
-            uf.following_id,
-            uf.follower_id
+            <include refid="selectAll"/>
         FROM user u
         INNER JOIN user_follow uf ON uf.following_id = u.id
-        where uf.follower_id = #{userId};
+        WHERE uf.follower_id = #{userId};
     </select>
+
+    <insert id="insertUser">
+        INSERT INTO user (
+            user_name, email, password, date_of_birth, post_update_date,
+            number_of_post, number_of_follower, number_of_following
+        )
+        VALUES (
+            #{userName}, #{email}, #{password}, #{dateOfBirth}, #{postUpdateDate},
+            #{numberOfPost}, #{numberOfFollower}, #{numberOfFollowing}
+        )
+    </insert>
+
+    <insert id="follow">
+        INSERT INTO user_follow (follower_id, following_id) VALUES (#{followerId}, #{followingId})
+    </insert>
+
+    <delete id="unfollow">
+        DELETE FROM user_follow
+        WHERE follower_id = #{followerId} AND following_id = #{followingId}
+    </delete>
 </mapper>
