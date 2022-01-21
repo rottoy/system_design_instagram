@@ -1,6 +1,5 @@
-package com.clone.instagram.unit.dao;
+package com.clone.instagram.unit.service;
 
-import com.apple.eawt.AppEvent;
 import com.clone.instagram.dao.UserDao;
 import com.clone.instagram.model.User;
 import com.clone.instagram.service.UserService;
@@ -13,14 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("dev")
-public class UserDaoTest {
+public class UserServiceTest {
 
     @Autowired
     UserService userService;
