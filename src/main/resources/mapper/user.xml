@@ -51,14 +51,9 @@
     </select>
 
     <insert id="insertUser">
-        INSERT INTO user (
-            user_name, email, password, date_of_birth, post_update_date,
-            number_of_post, number_of_follower, number_of_following
-        )
-        VALUES (
-            #{userName}, #{email}, #{password}, #{dateOfBirth}, #{postUpdateDate},
-            #{numberOfPost}, #{numberOfFollower}, #{numberOfFollowing}
-        )
+        INSERT INTO `user` (user_name, email, password, date_of_birth)
+        VALUES (#{userName}, #{email}, #{password}, #{dateOfBirth})
+
     </insert>
 
     <insert id="follow">

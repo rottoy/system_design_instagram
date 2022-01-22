@@ -12,14 +12,16 @@ CREATE TABLE `user`
     `number_of_post`      int         NOT NULL DEFAULT '0',
     `number_of_follower`  int         NOT NULL DEFAULT '0',
     `number_of_following` int         NOT NULL DEFAULT '0',
-    PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 1;
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uq_username` (`user_name`)
+) ENGINE = InnoDB AUTO_INCREMENT = 6;
 
 CREATE TABLE `user_follow`
 (
     `id`           int NOT NULL AUTO_INCREMENT,
     `follower_id`  int NOT NULL,
     `following_id` int NOT NULL,
-    PRIMARY KEY (`id`)
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `uq_folllowerid_followingid` (`follower_id`, `following_id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 1
 

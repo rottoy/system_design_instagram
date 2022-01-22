@@ -23,4 +23,18 @@ public class User {
     private int numberOfFollower;
     private int numberOfFollowing;
 
+    @Override
+    public String toString(){
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", postUpdateDate=" + postUpdateDate +
+                ", isPublic=" + isPublic +
+                ", numberOfPost=" + numberOfPost +
+                ", numberOfFollower=" + numberOfFollower +
+                ", numberOfFollowing=" + numberOfFollowing +
+                '}';
+    }
 }

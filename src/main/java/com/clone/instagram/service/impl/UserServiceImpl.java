@@ -1,13 +1,13 @@
 package com.clone.instagram.service.impl;
 
-import com.clone.instagram.dao.PostDao;
 import com.clone.instagram.dao.UserDao;
+import com.clone.instagram.exception.DuplicateUserNameException;
+import com.clone.instagram.exception.UserAlreadyFollowException;
 import com.clone.instagram.model.User;
-import com.clone.instagram.model.dto.UserDto;
 import com.clone.instagram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -17,18 +17,30 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public int save(User user){
-        return userDao.insertUser(user);
+    public int save(User user) throws DuplicateUserNameException{
+        try {
+            return userDao.insertUser(user);
+        }catch (DataIntegrityViolationException e){
+            throw new DuplicateUserNameException(e);
+        }
     }
 
     @Override
-    public int follow(int followerId, int followingId){
-        return userDao.follow(followerId, followingId);
+    public int follow(int followerId, int followingId) throws UserAlreadyFollowException{
+        try{
+            return userDao.follow(followerId, followingId);
+        }catch (DataIntegrityViolationException e) {
+            throw new UserAlreadyFollowException(e);
+        }
     }
 
     @Override
-    public int unfollow(int followerId, int followingId){
-        return userDao.unfollow(followerId, followingId);
+    public int unfollow(int followerId, int followingId) throws UserAlreadyFollowException{
+        try{
+            return userDao.unfollow(followerId, followingId);
+        }catch (DataIntegrityViolationException e) {
+            throw new UserAlreadyFollowException(e);
+        }
     }
 
     @Override
