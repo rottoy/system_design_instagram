@@ -12,4 +12,5 @@ public interface UserDao {
     public int follow(int followerId, int followingId) throws DuplicateKeyException;
     public List<User> selectFollowerList(int userId);
     public List<User> selectFollowingList(int userId);
+    User selectUserByUserName(String userName);
 }

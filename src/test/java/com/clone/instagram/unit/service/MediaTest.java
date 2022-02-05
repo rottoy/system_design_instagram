@@ -8,5 +8,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("dev")
-public class PhotoServiceTest {
+public class MediaTest {
 }

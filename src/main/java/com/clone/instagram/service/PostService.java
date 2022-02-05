@@ -4,7 +4,11 @@ import com.clone.instagram.model.Post;
 import com.clone.instagram.model.User;
 import com.clone.instagram.model.dto.PostDto;
 
-public interface PostsService {
+/*
+* PostService
+*
+* */
+public interface PostService {
 
     Post save(int userId);
     int delete(int postId);

@@ -53,5 +53,8 @@ public class UserServiceImpl implements UserService {
         return userDao.selectFollowerList(userId);
     }
 
-
+    @Override
+    public User getUser(String userName){
+        return userDao.selectUserByUserName(userName);
+    }
 }

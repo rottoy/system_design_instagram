@@ -33,6 +33,10 @@
         u.number_of_following
     </sql>
 
+    <sql id="selectId">
+        u.id
+    </sql>
+
     <select id="selectFollowerList" resultType="com.clone.instagram.model.User">
         SELECT
             <include refid="selectAll"/>
@@ -48,6 +52,13 @@
         FROM user u
         INNER JOIN user_follow uf ON uf.following_id = u.id
         WHERE uf.follower_id = #{userId};
+    </select>
+
+    <select id="selectUserByUserName" resultType="com.clone.instagram.model.User">
+        SELECT
+            <include refid="selectAll"/>
+        FROM user u
+        WHERE u.user_name = #{userName}
     </select>
 
     <insert id="insertUser">

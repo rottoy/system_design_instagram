@@ -12,5 +12,6 @@ public interface UserService {
     int unfollow(int userId1, int userId2)throws UserAlreadyFollowException ;
     List<User> getFollowingList(int userId);
     List<User> getFollowerList(int userId);
+    User getUser(String userName);
     //User getUserAndPosts(int userId);
 }
