@@ -8,6 +8,8 @@ import com.clone.instagram.model.payload.ApiResponse;
 import com.clone.instagram.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -74,12 +76,14 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/followingList")
-    public ResponseEntity<?> getFollowingList(@PathVariable int userId){
-        return ResponseEntity.ok(userService.getFollowingList(userId));
+    public ResponseEntity<?> getFollowingList(@PathVariable int userId,
+                                              @PageableDefault(value = 20) Pageable page){
+        return ResponseEntity.ok(userService.getFollowingList(userId, page));
     }
 
     @GetMapping("/{userId}/followerList")
-    public ResponseEntity<?> getFollowerList(@PathVariable int userId){
-        return ResponseEntity.ok(userService.getFollowerList(userId));
+    public ResponseEntity<?> getFollowerList(@PathVariable int userId,
+                                             @PageableDefault(value = 20) Pageable page){
+        return ResponseEntity.ok(userService.getFollowerList(userId, page));
     }
 }

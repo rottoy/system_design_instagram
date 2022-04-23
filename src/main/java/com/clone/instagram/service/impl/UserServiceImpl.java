@@ -7,6 +7,8 @@ import com.clone.instagram.model.User;
 import com.clone.instagram.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -44,13 +46,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getFollowingList(int userId){
-        return userDao.selectFollowingList(userId);
+    public List<User> getFollowingList(int userId, Pageable page){
+        return userDao.selectFollowingList(userId, page);
     }
 
     @Override
-    public List<User> getFollowerList(int userId){
-        return userDao.selectFollowerList(userId);
+    public List<User> getFollowerList(int userId, Pageable page){
+        return userDao.selectFollowerList(userId, page);
     }
 
     @Override

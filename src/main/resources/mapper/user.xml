@@ -40,25 +40,27 @@
     <select id="selectFollowerList" resultType="com.clone.instagram.model.User">
         SELECT
             <include refid="selectAll"/>
-        FROM user u
+        FROM `user` u
         INNER JOIN user_follow uf ON uf.follower_id = u.id
-        WHERE uf.following_id = #{userId};
+        WHERE uf.following_id = #{userId}
+        LIMIT ${pageable.size} OFFSET ${pageable.page}*${pageable.size};
     </select>
 
 
     <select id="selectFollowingList" resultType="com.clone.instagram.model.User">
         SELECT
             <include refid="selectAll"/>
-        FROM user u
+        FROM `user` u
         INNER JOIN user_follow uf ON uf.following_id = u.id
-        WHERE uf.follower_id = #{userId};
+        WHERE uf.follower_id = #{userId}
+        LIMIT ${pageable.size} OFFSET ${pageable.page}*${pageable.size};
     </select>
 
     <select id="selectUserByUserName" resultType="com.clone.instagram.model.User">
         SELECT
             <include refid="selectAll"/>
-        FROM user u
-        WHERE u.user_name = #{userName}
+        FROM `user` u
+        WHERE u.user_name = #{userName};
     </select>
 
     <insert id="insertUser">

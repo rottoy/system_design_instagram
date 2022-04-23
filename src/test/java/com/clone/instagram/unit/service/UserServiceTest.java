@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -45,7 +46,7 @@ public class UserServiceTest {
     @Test
     public void getFollowingTest(){
         int userId = 1;
-        List<User> userList = userService.getFollowingList(userId);
+        List<User> userList = userService.getFollowingList(userId, PageRequest.of(0, 10));
 
         assert userList.size() == 3;
     }
@@ -53,7 +54,7 @@ public class UserServiceTest {
     @Test
     public void getFollowerTest(){
         int userId = 1;
-        List<User> userList = userService.getFollowerList(userId);
+        List<User> userList = userService.getFollowerList(userId, PageRequest.of(0, 10));
 
         assert userList.size() == 2;
     }
@@ -82,4 +83,8 @@ public class UserServiceTest {
         assert unfollowCount2 == 0;
     }
 
+    @Test
+    public void test(){
+        System.out.println(userDao.selectUserByUserName("garen"));
+    }
 }

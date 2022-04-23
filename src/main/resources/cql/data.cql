@@ -1,0 +1,22 @@
+TRUNCATE insta_feed.user_feed;
+
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10000);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10002);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10003);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10004);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10005);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10006);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10007);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10008);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10009);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10010);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10011);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10012);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10013);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10014);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10015);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (1, 'test_user', dateOf(now()), 10016);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (2, '1q2w3e4r', dateOf(now()), 10000);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (2, '1q2w3e4r', dateOf(now()), 10001);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (2, '1q2w3e4r', dateOf(now()), 10002);
+INSERT INTO insta_feed.user_feed (user_id, user_name, create_at, post_id) VALUES (5, 'garen', dateOf(now()), 10005);
