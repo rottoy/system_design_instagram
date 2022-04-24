@@ -1,4 +1,4 @@
-package com.clone.instagram.payload;
+package com.clone.instagram.model.payload;
 
 import lombok.Builder;
 import lombok.Data;

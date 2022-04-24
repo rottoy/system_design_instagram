@@ -7,6 +7,6 @@ public class Comment {
 
     private int id;
     private int postId;
-    private User user;
+    private int numberOfLikes;
     private String content;
 }

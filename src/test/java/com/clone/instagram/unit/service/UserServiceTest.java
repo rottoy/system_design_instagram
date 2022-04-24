@@ -82,9 +82,4 @@ public class UserServiceTest {
 
         assert unfollowCount2 == 0;
     }
-
-    @Test
-    public void test(){
-        System.out.println(userDao.selectUserByUserName("garen"));
-    }
 }

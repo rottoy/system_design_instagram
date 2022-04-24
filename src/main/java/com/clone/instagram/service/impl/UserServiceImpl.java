@@ -10,6 +10,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -19,6 +21,7 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
+    @Transactional
     public int save(User user) throws DuplicateUserNameException{
         try {
             return userDao.insertUser(user);
@@ -28,6 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public int follow(int followerId, int followingId) throws UserAlreadyFollowException{
         try{
             return userDao.follow(followerId, followingId);
@@ -37,6 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public int unfollow(int followerId, int followingId) throws UserAlreadyFollowException{
         try{
             return userDao.unfollow(followerId, followingId);

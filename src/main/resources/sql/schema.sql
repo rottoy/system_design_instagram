@@ -34,3 +34,13 @@ CREATE TABLE `post` (
                         `create_date` datetime DEFAULT NULL,
                         PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT = 1;
+
+CREATE TABLE `likes` (
+                         `id` int NOT NULL AUTO_INCREMENT,
+                         `type` int NOT NULL,
+                         `user_id` int NOT NULL,
+                         `post_id` int NOT NULL,
+                         `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+                         PRIMARY KEY (`id`),
+                         UNIQUE KEY `uq_userid_postid` (`user_id`,`post_id`)
+) ENGINE=InnoDB AUTO_INCREMENT = 1;

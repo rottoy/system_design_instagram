@@ -2,16 +2,15 @@ package com.clone.instagram.service.impl;
 
 import com.clone.instagram.constants.AppConstants;
 import com.clone.instagram.dao.FeedDao;
+import com.clone.instagram.dao.PostDao;
 import com.clone.instagram.model.Post;
 import com.clone.instagram.model.User;
 import com.clone.instagram.model.UserFeed;
-import com.clone.instagram.payload.SlicedResult;
+import com.clone.instagram.model.payload.SlicedResult;
 import com.clone.instagram.service.FeedService;
 import com.clone.instagram.service.PostService;
 import com.clone.instagram.service.UserService;
 import com.datastax.oss.driver.api.core.cql.PagingState;
-import com.sun.tools.javac.util.Convert;
-import org.apache.tomcat.util.buf.ByteBufferUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.query.CassandraPageRequest;
 import org.springframework.data.domain.PageRequest;
@@ -19,8 +18,6 @@ import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +32,7 @@ public class FeedServiceImpl implements FeedService {
     private UserService userService;
 
     @Autowired
-    private PostService postService;
+    private PostDao postDao;
 
     @Autowired
     private FeedDao feedDao; // cassandra
@@ -70,7 +67,7 @@ public class FeedServiceImpl implements FeedService {
                 .map(UserFeed::getPostId)
                 .collect(toList());
 
-        List<Post> postList = postService.getPostIn(postIds);
+        List<Post> postList = postDao.selectPostIn(postIds);
 
         return SlicedResult
                 .<Post>builder()

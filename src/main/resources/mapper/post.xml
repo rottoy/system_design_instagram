@@ -13,8 +13,26 @@
         ;
     </select>
 
+    <select id="selectPostById" resultType="com.clone.instagram.model.Post">
+        SELECT * FROM
+        post
+        WHERE id = #{postId}
+    </select>
+
     <insert id="insertPost">
         INSERT INTO `post`(title, user_name, update_date, create_date)
         VALUES (#{title}, #{userName}, #{updateDate}, #{createDate})
     </insert>
+
+    <update id="increaseNumberOfLikesByPostId">
+        UPDATE post
+        SET number_of_likes = number_of_likes + 1
+        WHERE id = #{postId}
+    </update>
+
+    <update id="decreaseNumberOfLikesByPostId">
+        UPDATE post
+        SET number_of_likes = number_of_likes - 1
+        WHERE id = #{postId}
+    </update>
 </mapper>

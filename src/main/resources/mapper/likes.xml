@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clone.instagram.dao.LikesDao">
+
+    <select id="selectLikesByUserIdAndPostId" resultType="com.clone.instagram.model.Likes">
+        SELECT *
+        FROM likes
+        WHERE user_id = #{userId}
+        AND post_id = #{postId}
+    </select>
+
+    <insert id="insertLikes">
+        INSERT INTO `likes`(`type`, post_id, user_id, create_date)
+        VALUES (#{type}, #{postId}, #{userId}, #{createDate})
+    </insert>
+
+
+    <delete id="deleteLikes">
+        DELETE FROM
+        likes
+        WHERE id = #{likesId}
+    </delete>
+</mapper>

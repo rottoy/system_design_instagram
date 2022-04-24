@@ -15,7 +15,7 @@ INSERT INTO `user_follow` (`follower_id`,`following_id`) VALUES (4,5);
 INSERT INTO `user_follow` (`follower_id`,`following_id`) VALUES (5,1);
 INSERT INTO `user_follow` (`follower_id`,`following_id`) VALUES (5,2);
 
-INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10000,'test_post_1','test_user');
+INSERT INTO `post` (`id`,`title`,`number_of_likes`,`user_name`) VALUES (10000,'test_post_1',3,'test_user');
 INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10001,'test_post_1','1q2w3e4r');
 INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10002,'test_post_1','teemo');
 INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10003,'test_post_1','darius');
@@ -33,5 +33,7 @@ INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10014,'test_post_1','garen
 INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10015,'test_post_1','test_user');
 INSERT INTO `post` (`id`,`title`,`user_name`) VALUES (10016,'test_post_1','1q2w3e4r');
 
-
+INSERT INTO `likes` (`id`,`type`,`user_id`,`post_id`,`create_date`) VALUES (20000, 0, 5, 10000, now());
+INSERT INTO `likes` (`id`,`type`,`user_id`,`post_id`,`create_date`) VALUES (20001, 0, 3, 10000, now());
+INSERT INTO `likes` (`id`,`type`,`user_id`,`post_id`,`create_date`) VALUES (20002, 0, 2, 10000, now());
 
